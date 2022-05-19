@@ -28,12 +28,7 @@
 {{- $pages := .Pages }}
 
 {{- if .IsHome }}
-  {{/* first language is the main language, get all pages */}}
-  {{- if (eq site.Language (index site.Languages 0)) }}
-    {{- $pages = where site.AllPages "Kind" "page" }}
-  {{- else }}
-    {{- $pages = site.RegularPages }}
-  {{- end }}
+  {{- $pages = site.RegularPages }}
   {{- $pages = where $pages "Type" "in" site.Params.mainSections }}
 {{- end }}
 
