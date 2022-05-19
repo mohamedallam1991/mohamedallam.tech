@@ -1,0 +1,80 @@
+baseURL: 'https://mohamedallam.tech'
+title: My blog
+languageCode: 'en-us'
+theme: mohamed
+
+params:
+  # basic
+  description: Blog description
+  author: Mohamed
+  #images:
+  #  - preview.png
+  favicon: favicon.ico
+  #logo:
+  #  icon: forge.png
+  DateFormat: "2006-01-02"
+
+  # theme params
+  DisableLanguageSwitch: true
+  TocOpen: true
+  TocSide: right
+  EnableInstantClick: true
+  EnableImageZoom: true
+  ShowShareButtons: true
+  ShareButtons:
+    - twitter
+    - telegram
+  ShowReadingTime: true
+  ShowWordCount: true
+  ShowCodeCopyButtons: true
+  ShowPostNavLinks: true
+
+  socialIcons:
+    - name: github-simple
+      url: "https://github.com/"
+    - name: twitter-simple
+      url: "https://twitter.com/"
+    - name: telegram-simple
+      url: "https://t.me/"
+    - name: rss-simple
+      url: "feed.xml"
+
+languages:
+  en:
+    languageName: "English"
+    homeInfoParams:
+      Title: Blog title
+      Content: |-
+        Hello, I'm **NAME**.
+
+menu:
+  main:
+    - name: Archives
+      url: archives
+      weight: 1
+    - name: Tags
+      url: tags
+      weight: 2
+    - name: Search
+      url: search
+      weight: 3
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+
+outputFormats:
+  RSS:
+    mediatype: "application/rss"
+    baseName: "feed"
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    style: dracula
+    lineNos: false
+    noClasses: false
