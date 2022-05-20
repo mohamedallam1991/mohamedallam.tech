@@ -1,18 +1,18 @@
 baseURL: 'https://mohamedallam.tech'
-title: My blog
+title: Mohamed Allam
 languageCode: 'en-us'
 theme: mohamed
 
 params:
   # basic
-  description: Blog description
+  description: My journey cheating on PHP Laravel for Golang, then Elixir become my mistress
   author: Mohamed
   #images:
   #  - preview.png
   favicon: favicon.ico
   #logo:
   #  icon: forge.png
-  DateFormat: "2006-01-02"
+  DateFormat: "2022-01-19"
 
   # theme params
   DisableLanguageSwitch: true
@@ -30,10 +30,14 @@ params:
   ShowPostNavLinks: true
 
   socialIcons:
+    - name: linkedin-simple
+      url: "https://github.com/mohamedallam1991"
+    - name: youtube-simple
+      url: "https://github.com/mohamedallam1991"
     - name: github-simple
-      url: "https://github.com/"
+      url: "https://github.com/mohamedallam1991"
     - name: twitter-simple
-      url: "https://twitter.com/"
+      url: "https://twitter.com/mohamedallamorg"
     - name: telegram-simple
       url: "https://t.me/"
     - name: rss-simple
@@ -43,9 +47,9 @@ languages:
   en:
     languageName: "English"
     homeInfoParams:
-      Title: Blog title
+      Title: My journey learning to code publicly, documenting the process
       Content: |-
-        Hello, I'm **NAME**.
+        Hello, I'm **MOHAMED**. Nice to have you here!
 
 menu:
   main:
