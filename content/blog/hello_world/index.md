@@ -1,5 +1,5 @@
 ---
-title: "Hello World"
+title: "Hello Go"
 slug: hello-world
 date: 2022-05-19
 description: Say hello to the world
