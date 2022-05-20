@@ -1,8 +1,8 @@
 ---
 title: "Hello Go"
-slug: hello-world
+slug: hello-go
 date: 2022-05-19
-description: Say hello to the world
+description: Say hello to the Go lang
 tags:
   - hello
   - world
