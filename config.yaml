@@ -3,15 +3,6 @@ title: Mohamed Allam
 languageCode: 'en-us'
 theme: PaperModX
 
-# author:
-#   facebook: facebook.com/mohamedallam1991
-#   twitter: mohamedallamorg
-#   email: me@mohamedallam.tech
-#   name: "Mohamed Allam"
-#   location: New York
-#   phone: (999) 999-9999
-#   hours: "Mon-Fri: 9:00AM - 6:00Pm, ET"
-
 params:
   # basic
   description: My journey cheating on PHP Laravel for Golang, then Elixir become my mistress
@@ -73,6 +64,9 @@ menu:
     - name: Search
       url: search
       weight: 3
+    - name: Contact
+      url: contact
+      weight: 4
 
 outputs:
   home:
