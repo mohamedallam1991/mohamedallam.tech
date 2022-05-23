@@ -3,14 +3,14 @@ title: Mohamed Allam
 languageCode: 'en-us'
 theme: PaperModX
 
-author:
-  facebook: facebook.com/mohamedallam1991
-  twitter: mohamedallamorg
-  email: me@mohamedallam.tech
-  name: "Mohamed Allam"
-  location: New York
-  phone: (999) 999-9999
-  hours: "Mon-Fri: 9:00AM - 6:00Pm, ET"
+# author:
+#   facebook: facebook.com/mohamedallam1991
+#   twitter: mohamedallamorg
+#   email: me@mohamedallam.tech
+#   name: "Mohamed Allam"
+#   location: New York
+#   phone: (999) 999-9999
+#   hours: "Mon-Fri: 9:00AM - 6:00Pm, ET"
 
 params:
   # basic
@@ -39,6 +39,8 @@ params:
   ShowPostNavLinks: true
 
   socialIcons:
+    - name: facebook-simple
+      url: "https://facebook.com/mohamedallam1991"
     - name: linkedin-simple
       url: "https://github.com/mohamedallam1991"
     - name: youtube-simple
