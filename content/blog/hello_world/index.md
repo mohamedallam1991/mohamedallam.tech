@@ -12,6 +12,6 @@ cover:
   caption: Cover caption
 ---
 
-
+![](go.svg)
 This page demostrates a published (non-draft) one, with tags that can be seen
 in [Tags](/tags)
