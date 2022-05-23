@@ -1,5 +1,5 @@
 ---
-title: "Hello Go"
+title: "Blogging for developers"
 slug: blogging
 date: 2022-05-23
 description: How blogging can help your IT journey
