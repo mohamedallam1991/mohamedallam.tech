@@ -12,7 +12,7 @@ params:
   favicon: favicon.ico
   #logo:
   #  icon: forge.png
-  DateFormat: "2022-01-19"
+  DateFormat: "2006-01-02"
 
   # theme params
   DisableLanguageSwitch: true
