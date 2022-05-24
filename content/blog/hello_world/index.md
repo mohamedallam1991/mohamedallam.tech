@@ -15,4 +15,4 @@ cover:
 This page demostrates a published (non-draft) one, with tags that can be seen
 in [Tags](/tags)
 
-<img src="go.svg" style="width: 40%" no-zoom>
+<img src="go.svg" atl="Go logo" style="width: 40%" no-zoom>
