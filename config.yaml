@@ -30,20 +30,18 @@ params:
   ShowPostNavLinks: true
 
   socialIcons:
-    - name: facebook-simple
-      url: "https://facebook.com/mohamedallam1991"
     - name: linkedin-simple
       url: "https://www.linkedin.com/in/mohamedallam1991/"
     - name: youtube-simple
       url: "https://www.youtube.com/channel/UCR1c1Y6c7Q7HPJLjtBWy71g/videos"
     - name: youtube-simple
-      url: "https://youtube.com/mohamedallam1991"
+      url: "https://www.youtube.com/channel/UCkHZvahLXjZtxIgnSvzVQUA/videos"
     - name: github-simple
       url: "https://github.com/mohamedallam1991"
     - name: twitter-simple
       url: "https://twitter.com/mohamedallamorg"
     - name: telegram-simple
-      url: "https://t.me/"
+      url: "https://t.me/kindatired"
     - name: rss-simple
       url: "feed.xml"
 
