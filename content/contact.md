@@ -6,6 +6,8 @@ hideMeta: true
 ## My Contact Info
 I'm a self-taught freelance web developer who specializes in backend development. I've been working in the web development industry for over 5 years now and have developed a vast knowledge of various programming languages and frameworks. My skills include PHP, Ruby on Rails, Java, Node.js, and React. I love working with clients to develop custom solutions that meet their specific needs. If you're looking for an experienced and knowledgeable web developer who can help you build a strong online presence, then contact me!
 
+Contact me and I will get back to you as soon as possible.
+
 - facebook: facebook.com/mohamedallam1991
 - twitter: mohamedallamorg
 - email: me@mohamedallam.tech
