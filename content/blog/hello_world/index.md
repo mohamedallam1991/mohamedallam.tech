@@ -4,8 +4,8 @@ slug: hello-go
 date: 2022-05-19
 description: Say hello to the Go lang
 tags:
-  - hello
-  - world
+  - Go
+  - Blogging
 ShowToc: true
 cover:
   image: hello_world.png
