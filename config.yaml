@@ -33,9 +33,11 @@ params:
     - name: facebook-simple
       url: "https://facebook.com/mohamedallam1991"
     - name: linkedin-simple
-      url: "https://github.com/mohamedallam1991"
+      url: "https://www.linkedin.com/in/mohamedallam1991/"
     - name: youtube-simple
-      url: "https://github.com/mohamedallam1991"
+      url: "https://www.youtube.com/channel/UCR1c1Y6c7Q7HPJLjtBWy71g/videos"
+    - name: youtube-simple
+      url: "https://youtube.com/mohamedallam1991"
     - name: github-simple
       url: "https://github.com/mohamedallam1991"
     - name: twitter-simple
