@@ -3,7 +3,6 @@ title: "Hello Go"
 slug: hello-go
 date: 2022-05-19
 description: Say hello to the Go lang
-keywords: Golang function missing body or unexpected semicolon or newline before { curly braces
 tags:
   - Go
   - Blogging

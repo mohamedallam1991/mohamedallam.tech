@@ -56,6 +56,9 @@ languages:
 
 menu:
   main:
+    - name: Blog
+      url: blog
+      weight: 1
     - name: Archives
       url: archives
       weight: 1
