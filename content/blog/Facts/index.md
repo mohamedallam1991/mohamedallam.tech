@@ -1,5 +1,5 @@
 ---
-title: "Algeria’s LinkedIn, online population and other statso"
+title: "Algeria’s LinkedIn, online population and other statistics"
 slug: algeria-linkedin-online-population
 date: 2022-05-19
 description: How many Algeria users are there on the LinkedIn userbase, and how that reflects over the entire population.
