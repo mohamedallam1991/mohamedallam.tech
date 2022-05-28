@@ -20,7 +20,294 @@ Other programming languages has source code formatting</p>
 <h3 id="why-are-there-braces-but-no-semicolons-and-why-cant-i-put-the-opening-brace-on-the-next-line">Why are there braces but no semicolons? And why can&rsquo;t I put the opening brace on the next line?</h3>
 <p>Go uses brace brackets for statement grouping, a syntax familiar to programmers who have worked with any language in the C family. Semicolons, however, are for parsers, not for people, and we wanted to eliminate them as much as possible. To achieve this goal, Go borrows a trick from BCPL: the semicolons that separate statements are in the formal grammar but are injected automatically, without lookahead, by the lexer at the end of any line that could be the end of a statement. This works very well in practice but has the effect that it forces a brace style. For instance, the opening brace of a function cannot appear on a line by itself.</p>
 <p>Some have argued that the lexer should do lookahead to permit the brace to live on the next line. We disagree. Since Go code is meant to be formatted automatically by <code>[gofmt](https://go.dev/cmd/gofmt/)</code>, <em>some</em> style must be chosen. That style may differ from what you&rsquo;ve used in C or Java, but Go is a different language and <code>gofmt</code>&rsquo;s style is as good as any other. More important—much more important—the advantages of a single, programmatically mandated format for all Go programs greatly outweigh any perceived disadvantages of the particular style. Note too that Go&rsquo;s style means that an interactive implementation of Go can use the standard syntax one line at a time without special rules.</p>
-]]></content:encoded></item><item><title>Blogging for developers</title><link>https://mohamedallam.tech/blog/blogging/</link><pubDate>Mon, 23 May 2022 00:00:00 +0000</pubDate><guid>https://mohamedallam.tech/blog/blogging/</guid><description>How blogging can help your IT journey</description><content:encoded><![CDATA[<p>Looking For Reliable Blogging Advice? Read This!</p>
+]]></content:encoded></item><item><title>Golang variables everything you need to know</title><link>https://mohamedallam.tech/blog/golang-variables/</link><pubDate>Tue, 24 May 2022 00:00:00 +0000</pubDate><guid>https://mohamedallam.tech/blog/golang-variables/</guid><description>In this long and detailed blog post we learn everything about variables in the Go programing language</description><content:encoded><![CDATA[<h1 id="variables">Variables</h1>
+<aside>
+💡 Variable declaration
+Redeclaration and shadowing
+Visibility
+Naming conventions
+Type conversion
+</aside>
+<h2 id="what-is-a-variable-in-general">What is a variable in general?</h2>
+<p>A variable in programming is a data, that changes depending on certaing things, so certainly a variable will be stored in memory during certain cycle.</p>
+<p>For example if we register a user, his name is a variable, we call name, and the value assigned to it, is his name.</p>
+<p>Each user will have different name obviously, so that varies.</p>
+<h2 id="why-data-type-exists">Why data type exists?</h2>
+<p>So all users have names. and the name has a type of characters. so a name is sequence of letters, John, Jane or Johny ..ect however he unlikely has a name of 007 right.</p>
+<p>An age however, is generally a sequence of digits  4, 18, 67 years old.</p>
+<p>This lead us to understand, age is integer, and name is a string. there is some other types.</p>
+<h3 id="bonus">Bonus</h3>
+<p>Our software will hold plenty of variables of so many types, however we often use them in certain level, or scope. you dont want the variables hanging, accessible and editable everywhere. thats why in programming often, the variables has a scope declaration, which dictates the boundaries of this particular variable. (private, public, global..ect)</p>
+<aside>
+💡 Off Go topic but in programming in general
+- We need a combination of freedom to do things, but certain rules help us stay consice. in a way we have helpful restrictions.
+- Imagine we have cars, but we don’t have a law of traffic, then you can drive in any direction at any speed in any manner, how horrible driving a car experience will be?
+I am sure you would still manage to move from A to be B eventually but how if we have certain rules to keep you safe.
+- Each programming language or framework will try to keep you safe in its way, and there is further arbitrary things you or your tech leder will decide upon.
+</aside>
+<aside>
+💡 We can show hello world and go from there trying to print out something different
+</aside>
+<h2 id="how-to-declare-a-variable-in-go">How to declare a variable in Go</h2>
+<p>To declare a variable in Golang, there is 3 ways of declarations, one thing to consider is that always a variable will have a predefined type, otherwise our compiler will yell at us.</p>
+<p>The declaration will be a combination of:</p>
+<ul>
+<li>The keyword var, which stands for variable obviously.</li>
+<li>An arbitrary name (ex: i, age, phoneNumber).</li>
+<li>Variable type which can be String, Integer, Float..ect or we can let the compiler detect the type at compile time.</li>
+<li>Optionally we can initiliase the variable instantly, or sometimes we declare a variable, differently from initialising it. (bear in mind, every variable has to be used).</li>
+</ul>
+<p>Here is an example of a variable declaration.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="kd">var</span> <span class="nx">name</span> <span class="kt">string</span> <span class="p">=</span> <span class="s">&#34;John&#34;</span>
+<span class="kd">var</span> <span class="nx">age</span> <span class="kt">int</span>
+<span class="nx">age</span> <span class="p">=</span> <span class="mi">30</span>
+<span class="nx">country</span> <span class="o">:=</span> <span class="s">&#34;DZ&#34;</span>
+</code></pre></div><aside>
+💡 Var keyword refers to variables in Golang
+</aside>
+<h2 id="golang-print-a-variable">Golang print a variable</h2>
+<p>Golang has variety of ways and functions to print a variable, but for our learning purposes we will see two ways, using the FMT package, or the built in function</p>
+<p>We can use <code>println</code> function from the built in functions, to print variables in a single line, or we can use the package FMT, which provides many other tools including printing the value within a string, or getting the type to see what we are working with.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&#34;fmt&#34;</span>
+
+<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="kd">var</span> <span class="nx">name</span> <span class="kt">string</span> <span class="p">=</span> <span class="s">&#34;John&#34;</span>
+	<span class="kd">var</span> <span class="nx">age</span> <span class="kt">int</span>
+	<span class="nx">age</span> <span class="p">=</span> <span class="mi">30</span>
+	<span class="nx">country</span> <span class="o">:=</span> <span class="s">&#34;DZ&#34;</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">country</span><span class="p">)</span>
+	<span class="nb">println</span><span class="p">(</span><span class="nx">age</span><span class="p">)</span>
+	<span class="nb">print</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">//DZ
+</span><span class="c1">//30
+</span><span class="c1">//John
+</span><span class="c1">//Program exited.
+</span></code></pre></div><h2 id="go-reads-up-to-bottom">Go reads up to bottom</h2>
+<p>In Go code, the program reads up to down, means if we set a variable to a value, than set it again, the bottom variable will override the other one.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="kd">var</span> <span class="nx">age</span> <span class="kt">int</span> <span class="p">=</span> <span class="mi">40</span>
+<span class="nx">age</span> <span class="p">=</span> <span class="mi">30</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">age</span><span class="p">)</span> <span class="c1">// 30
+</span></code></pre></div><h2 id="the-three-forms-of-declaration-and-assignment-of-value-to-them">The three forms of declaration and assignment of value to them</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="kd">var</span> <span class="nx">name</span> <span class="kt">string</span> <span class="p">=</span> <span class="s">&#34;John&#34;</span> <span class="c1">// we declare variable, data type, and initialise it with a value.
+</span><span class="c1"></span><span class="kd">var</span> <span class="nx">name</span> <span class="o">:=</span> <span class="s">&#34;John&#34;</span> <span class="c1">// we declare variable and its value, we let the compiler detect the type.
+</span><span class="c1"></span><span class="kd">var</span> <span class="nx">name</span> <span class="kt">string</span> <span class="c1">// we only declare variable ***name*** and its type. which is ***string***.
+</span><span class="c1"></span><span class="nx">name</span> <span class="p">=</span> <span class="s">&#34;Jane&#34;</span> <span class="c1">// we assign the value Jane to the variable.
+</span></code></pre></div><p>Initially we don’t want to be more verbose than we have to, therefor we would generally use the shortest version, however at times we would need to use the inline one as we want to precise the variable type.</p>
+<p>Lastly the two lines declaration and assignment is used when we dont want to assign the value upfront, and we would assign that later in our code.</p>
+<p>This three declarations are identical.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="kd">var</span> <span class="nx">age</span> <span class="kt">int</span>
+<span class="nx">age</span> <span class="p">=</span> <span class="mi">30</span>
+<span class="kd">var</span> <span class="nx">age</span> <span class="kt">int</span> <span class="p">=</span> <span class="mi">30</span>
+<span class="nx">age</span> <span class="o">:=</span> <span class="mi">30</span>
+</code></pre></div><h3 id="type-inference-and-short-variable-declaration">Type inference and short variable declaration</h3>
+<p>Often in Go lang we use the short form variable declaration</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="nx">age</span> <span class="o">:=</span> <span class="mi">30</span>
+</code></pre></div><p>Go uses type inference to determine what type of data it’s working with. data types only need to be provided in certain circumstances, compiler is always making sure what we type is correct, otherwise we get a compiler error, which provides type safety to us.</p>
+<p>Its possible that data is invalid for the given type only if</p>
+<ul>
+<li>We deal with user inputs</li>
+<li>Manually manipulate the binary data (pointers)</li>
+</ul>
+<h2 id="data-type-declaration">Data type declaration</h2>
+<p>Sometimes we need control over declaring a variable data type and other times we just want to delegate to the complier do that for us.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="kd">var</span> <span class="nx">name</span> <span class="kt">string</span> <span class="p">=</span> <span class="s">&#34;john&#34;</span>
+<span class="kd">var</span> <span class="nx">name</span> <span class="o">:=</span> <span class="s">&#34;john&#34;</span>
+</code></pre></div><p>This two lines of code are identical. its where we declare a variable called name, with string type, and value john.</p>
+<p>However in first one, we explicitly declare the variable type.</p>
+<p>The second one, we delegate to the complier our friend to do the job for us. This is more used when you are experienced.</p>
+<aside>
+💡 Quotes is how to write a string in Golang. so Go knows its not a keyword we want to use or a function..ect
+For example 42, and “42” dosent mean the same thing, the first one is for integers, and the second one is for strings.
+</aside>
+<p>There is more details about variables data types in <a href="https://golangbyexample.com/all-data-types-in-golang-with-examples/">here</a>. (<a href="https://golangbyexample.com/all-data-types-in-golang-with-examples/">https://golangbyexample.com/all-data-types-in-golang-with-examples/</a>)</p>
+<h3 id="type-of-variables">Type of variables</h3>
+<p>In general a variable can be:</p>
+<ul>
+<li>boolean</li>
+<li>integer</li>
+<li>float</li>
+<li>complex</li>
+<li>String</li>
+<li>Rune</li>
+<li>Array</li>
+<li>Map</li>
+<li>…ect</li>
+</ul>
+<h2 id="when-to-use-each-syntax">When to use each syntax?</h2>
+<ul>
+<li>The first format, is what we do when we want to declare a variable but we are not ready to initialize it yet.</li>
+<li>We use the second format, when we think Go will mistake in the type, so we want to give precise data type, example if we write:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="nx">price</span> <span class="o">:=</span> <span class="mi">9</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%v, $T&#34;</span><span class="p">,</span> <span class="err">$</span><span class="nx">j</span><span class="p">,</span> <span class="err">$</span><span class="nx">j</span><span class="p">)</span> <span class="c1">// 9, int
+</span><span class="c1">// correct one
+</span><span class="c1"></span><span class="nx">price</span> <span class="kt">float32</span> <span class="p">=</span> <span class="mi">9</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%v, $T&#34;</span><span class="p">,</span> <span class="err">$</span><span class="nx">j</span><span class="p">,</span> <span class="err">$</span><span class="nx">j</span><span class="p">)</span> <span class="c1">// 9, float32
+</span></code></pre></div><p>obviously Go will see this as an integer, while we might want it to be a floating number. therefor we would have to declare the type upfront in this case.</p>
+<ul>
+<li>For other cases where Go will be correct in figuring out the variable data type.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="c1">//1 Generally when we want to declarer a variable but we are not ready just yet to initilise it yet. like maybe we declare the variable in a function, but we assign the value within a loop inside the function.
+</span><span class="c1"></span><span class="kd">var</span> <span class="nx">name</span> <span class="kt">string</span>
+<span class="nx">name</span> <span class="p">=</span> <span class="err">&#34;</span><span class="nx">john</span>
+
+<span class="c1">//2 this is probably most common one, as we let the complier help us, define the data type, and initialise the variable with a value.
+</span><span class="c1"></span><span class="nx">k</span> <span class="o">:=</span> <span class="mi">9</span>
+
+<span class="c1">//3 We use this expressive syntax when we have granular control over our variables.
+</span><span class="c1"></span><span class="kd">var</span> <span class="nx">i</span> <span class="kt">int</span> <span class="p">=</span> <span class="mi">42</span>
+</code></pre></div><h2 id="variable-declaration-outside-a-function-level">Variable declaration outside a function level</h2>
+<p>If we want to declare a variable outside a function we cant use the shorthanded declaration, we would need to define the data type upfront.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="kd">var</span> <span class="nx">age</span> <span class="nx">integer</span> <span class="p">=</span> <span class="mi">42</span>
+</code></pre></div><h3 id="variable-block">Variable block</h3>
+<p>Lets say we have a bunch of variable declarations in a package level.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kd">var</span> <span class="nx">name</span> <span class="kt">string</span> <span class="p">=</span> <span class="s">&#34;Mohamed&#34;</span>
+<span class="kd">var</span> <span class="nx">age</span> <span class="nx">integer</span> <span class="p">=</span> <span class="mi">30</span>
+<span class="kd">var</span> <span class="nx">hourlyRate</span> <span class="kt">float32</span> <span class="p">=</span> <span class="mf">49.99</span>
+</code></pre></div><p>This is making things little bit cluttered, we can use another syntax for this</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="kd">var</span> <span class="p">(</span>
+	<span class="nx">name</span> <span class="kt">string</span> <span class="p">=</span> <span class="s">&#34;Mohamed&#34;</span>
+	<span class="nx">age</span> <span class="nx">integer</span> <span class="p">=</span> <span class="mi">30</span>
+	<span class="nx">hourlyRate</span> <span class="kt">float32</span> <span class="p">=</span> <span class="mf">49.99</span>
+<span class="p">)</span>
+</code></pre></div><h3 id="declare-multiple-variables"><strong>declare multiple variables</strong></h3>
+<p>Many times, we find ourselves needing to declare or even initialise multiple variables, there is a shorthand for that as well</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="kd">var</span> <span class="nx">firstName</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">,</span> <span class="nx">email</span> <span class="kt">string</span>
+<span class="kd">var</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="p">=</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span> <span class="c1">// 10 int, 20 int
+</span><span class="c1"></span><span class="kd">var</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="p">=</span> <span class="s">&#34;q&#34;</span><span class="p">,</span> <span class="mi">20</span> <span class="c1">//10 int, &#34;q&#34; string
+</span></code></pre></div><h2 id="shadowing">Shadowing</h2>
+<p>given we declare a same variable in the package level, than we redeclare it, at a function level.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&#34;fmt&#34;</span>
+
+<span class="kd">var</span> <span class="nx">i</span> <span class="kt">int</span> <span class="p">=</span> <span class="mi">50</span>
+
+<span class="kd">func</span> <span class="nf">main</span> <span class="p">(){</span>
+	<span class="kd">var</span> <span class="nx">i</span> <span class="kt">int</span> <span class="p">=</span> <span class="mi">20</span>
+	<span class="nx">i</span> <span class="o">:=</span> <span class="mi">30</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div><p>This will cause us an error, we cant redeclare a variable in the same scope, or level, so here the main function cant have two declaration, but we can of course can assign a value to it <code>i = 30</code></p>
+<p>The variable with the most intermost scope actually takes precedence. this is called shadowing.</p>
+<h2 id="the-default-value-of-a-variable">The default value of a variable</h2>
+<p>Go focuses on integrity. One way is the concept of zero value, any variable will have a value in memory, so as soon as we declare a variable it will have a zero value.</p>
+<ul>
+<li>Integers and floats to 0</li>
+<li>Boolean to false</li>
+<li>String to empty space not nil or null “”</li>
+</ul>
+<aside>
+💡 The fmt pacakge is official package, that allow us to print things to screen in different ways and forms
+</aside>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">()</span> <span class="c1">// prints in a new line
+</span><span class="c1"></span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">()</span> <span class="c1">//print whateverr we give it
+</span><span class="c1"></span><span class="o">%</span><span class="nx">v</span><span class="p">,</span> <span class="nx">theValue</span> <span class="c1">// We can use the $v as a placeholder, then set the value variable
+</span><span class="c1"></span><span class="o">%</span><span class="nx">T</span><span class="p">,</span> <span class="nx">theType</span> <span class="c1">// we can do the same with %T, except its to print the type of a variable
+</span></code></pre></div><h3 id="case-sensitive-variables">Case sensitive variables</h3>
+<p>In Go, variables are case sensitive it means, if we have two variables with different upper and lower cases, it would mean they are two different variables</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&#34;fmt&#34;</span>
+
+<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="kd">var</span> <span class="nx">i</span> <span class="kt">int</span> <span class="p">=</span> <span class="mi">20</span>
+	<span class="kd">var</span> <span class="nx">I</span> <span class="kt">int</span> <span class="p">=</span> <span class="mi">10</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">I</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div><h2 id="naming-convention-and-visibility-of-golang-variables">Naming convention and visibility of Golang variables</h2>
+<p>There is two rules of thumb:</p>
+<ul>
+<li>Naming convention controls the visibility, the first letter of variable defines wether its global or local, lower case first letter (aka camel case) are scoped to the package they are declared in, Upper case first letter (aka Pascale case) exposes the variable to the outside scope they become global. The three levels of visibility in Golang
+<ul>
+<li>Package level scope if its lower case, so any file under the same package can access the variable,</li>
+<li>If its upper case in the package, it becomes globally visible</li>
+<li>Block scope so if its in a loop or a function..ect</li>
+</ul>
+</li>
+<li>The name of the variable is affected by the lifespan of the variable, if its going to be used for long then be as descriptive as possible, but dont go over 50 letters or so, However if you just need it where you will use it, then feel free to minimize the length.</li>
+<li>When you use acronyms, like HTTP, or URL URI..ect keep those all upper case.</li>
+</ul>
+<h3 id="what-about-not-using-a-variable-in-its-declaration-block">What about not using a variable in its declaration block?</h3>
+<p>Golang complier, obliges us to use the variables, otherwise we would be yelled at.
+So bear in mind that whenever you declare a variable you have to use it in its scope, or the interscopes, otherwise the complier will complain.</p>
+<p>This is pretty valuable to keep our code concise and get rid of junk or unused code</p>
+<h2 id="how-to-convert-a-type-of-a-variable">How to convert a type of a variable</h2>
+<p>Given we initialize a variable, but later we decide to change its type, by passing in another variable with a different type.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="kd">var</span> <span class="nx">i</span> <span class="kt">int</span> <span class="p">=</span> <span class="mi">21</span>
+<span class="kd">var</span> <span class="nx">j</span> <span class="kt">float32</span>
+<span class="nx">j</span> <span class="p">=</span> <span class="nx">i</span>  <span class="c1">// this should mean j = 21
+</span></code></pre></div><p>This can be done, however at times we want to do the opposite, so then we need to explicitly do that, otherwise the complier would yell at us, as he dont want use to loose information.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="kd">var</span> <span class="nx">a</span> <span class="kt">float32</span> <span class="p">=</span> <span class="mf">43.5</span>
+<span class="kd">var</span> <span class="nx">b</span> <span class="kt">int</span>
+<span class="nx">b</span> <span class="p">=</span> <span class="nx">a</span> <span class="c1">// this gives error, because the integer will only take 43
+</span><span class="c1"></span><span class="nx">b</span> <span class="p">=</span> <span class="nb">int</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span> <span class="c1">//work around but keep in mind you have to be responsible to loose information
+</span></code></pre></div><p>If you want to convert between an integer and a string, you will have to use the package “strconv” because in Golang strings are alias for bytes</p>
+<p>From integer to float which is fine</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">main</span> <span class="p">(){</span>
+	<span class="kd">var</span> <span class="nx">i</span> <span class="kt">int</span> <span class="p">=</span> <span class="mi">911</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%v, %T&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">i</span> <span class="p">)</span> <span class="c1">//911, int
+</span><span class="c1"></span>
+	<span class="kd">var</span> <span class="nx">j</span> <span class="kt">float32</span>
+	<span class="nx">j</span> <span class="p">=</span> <span class="nb">float32</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%v, %T&#34;</span><span class="p">,</span> <span class="nx">j</span><span class="p">,</span> <span class="nx">j</span> <span class="p">)</span> <span class="c1">//911, float32
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></div><p>We can also do</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">main</span> <span class="p">(){</span>
+	<span class="kd">var</span> <span class="nx">i</span> <span class="kt">float32</span> <span class="p">=</span> <span class="mi">911</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%v, %T&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">i</span> <span class="p">)</span> <span class="c1">//911, float32
+</span><span class="c1"></span>
+	<span class="kd">var</span> <span class="nx">j</span> <span class="kt">int</span>
+	<span class="nx">j</span> <span class="p">=</span> <span class="nb">int</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%v, %T&#34;</span><span class="p">,</span> <span class="nx">j</span><span class="p">,</span> <span class="nx">j</span> <span class="p">)</span> <span class="c1">//911, int
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></div><p>If we try <code>j = i</code>, isntead this wont work, because go wont risk of loosing information, because the float might have a decimal on it.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="nx">j</span> <span class="p">=</span> <span class="nb">float32</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+<span class="c1">// it can be
+</span><span class="c1"></span><span class="nx">j</span> <span class="p">=</span> <span class="nx">i</span>
+</code></pre></div><p>If we try to convert an integer to a string, it wont work  unless we use a package strconv.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">main</span> <span class="p">(){</span>
+	<span class="kd">var</span> <span class="nx">i</span> <span class="kt">int</span> <span class="p">=</span> <span class="mi">911</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%v, %T&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">i</span> <span class="p">)</span> <span class="c1">//911, int
+</span><span class="c1"></span>
+	<span class="kd">var</span> <span class="nx">j</span> <span class="kt">string</span>
+	<span class="nx">j</span> <span class="p">=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nf">Itoa</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%v, %T&#34;</span><span class="p">,</span> <span class="nx">j</span><span class="p">,</span> <span class="nx">j</span> <span class="p">)</span> <span class="c1">//911, string
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></div><p>If we just use the regular one, Go would think its a slice and will give is some charachter matching the slice value of the given index (40 in this case)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="kd">var</span> <span class="nx">i</span> <span class="kt">int</span> <span class="p">=</span> <span class="mi">40</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%v, %T&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">i</span> <span class="p">)</span> <span class="c1">//40, int
+</span><span class="c1"></span>
+<span class="kd">var</span> <span class="nx">j</span> <span class="kt">string</span>
+<span class="nx">j</span> <span class="p">=</span> <span class="nb">string</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%v, %T&#34;</span><span class="p">,</span> <span class="nx">j</span><span class="p">,</span> <span class="nx">j</span> <span class="p">)</span> <span class="c1">//(, string
+</span></code></pre></div><h3 id="all-variables-are-zero-valued">All variables are zero valued</h3>
+<p>This means whenever we declare a varaible it has a value, its not null/nil therefor if its a numeric type its 0, if its a string its “”. false for booleans, nil for interfaces, so all variables have a value.</p>
+<p>For example s string is an empty string, which wont create errors or unpredictable behaviour.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="kd">var</span> <span class="nx">s</span> <span class="kt">string</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nf">PrintLn</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span> <span class="c1">// &#34;&#34;
+</span></code></pre></div><h3 id="common-syntax">Common syntax</h3>
+<p>Sometimes we encouter a situation where something should return two variables, not just one.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="kd">var</span> <span class="nx">f</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">Open</span><span class="p">(</span><span class="nx">fileName</span><span class="p">)</span>
+</code></pre></div><p>This would return f, and error. however if in some cases we just want to ignore the error, we can use the underscore, which will ignore whats returned and avoids memory allocation.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="kd">var</span> <span class="nx">f</span><span class="p">,</span> <span class="nx">_</span> <span class="p">=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">Open</span><span class="p">(</span><span class="nx">fileName</span><span class="p">)</span>
+</code></pre></div><h3 id="have-to-be-used">Have to be used</h3>
+<p>If you declare a variable and dont use it, the compiler will yell at us, we always need to use any variable we declare.</p>
+<p>We can declare a variable and not use it in its scope, we would definitely see the compiler yelling at us:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">main</span> <span class="p">(){</span>
+	<span class="kd">var</span> <span class="nx">i</span> <span class="kt">string</span>
+<span class="p">}</span>
+<span class="c1">// go run main.go
+</span><span class="c1"></span> <span class="nx">i</span> <span class="nx">declared</span> <span class="nx">but</span> <span class="nx">not</span> <span class="nx">used</span>
+</code></pre></div><h3 id="acronyms">Acronyms</h3>
+<p>Best practice in Go lang we use upper case for better readability.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="nx">HTTPRequest</span><span class="p">,</span> <span class="nx">URL</span>
+</code></pre></div>]]></content:encoded></item><item><title>Blogging for developers</title><link>https://mohamedallam.tech/blog/blogging/</link><pubDate>Mon, 23 May 2022 00:00:00 +0000</pubDate><guid>https://mohamedallam.tech/blog/blogging/</guid><description>How blogging can help your IT journey</description><content:encoded><![CDATA[<p>Looking For Reliable Blogging Advice? Read This!</p>
 <p>Blogs have a profound effect on people&rsquo;s lives. Blogging can be a tool that will be useful for everyday people to influence the world with a large audience. Read this article to learn more about how to make blogging successfully.</p>
 <p>Don&rsquo;t ever make blogging your life all about blogging. If you do not give yourself time to do things away from you computer, you can easily burn out. Take scheduled walks, call a friend or take a quick break for a few minutes. Taking some time off will allow you return refreshed and ready to write.</p>
 <p>Make sure your posts are brief and concise. While you want lots of great content, going on and on will likely lose the interest of your readers. Blog readers do not require detailed and other unnecessary information.They want to get to the heart of the post.</p>
