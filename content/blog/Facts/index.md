@@ -105,7 +105,7 @@ This figure means that Twitter’s ad reach in Algeria was equivalent to **2.0�
 
 ## ****LinkedIn users in Algeria in 2022****
 
-<img src="Linkedin advertising audience overview.png" atl="LinkedIn users in Algeria in 2022">
+<img src="Linkedin advertising audience overview.png" alt="LinkedIn users in Algeria in 2022">
 
 Figures published in LinkedIn’s advertising resources indicate that **LinkedIn** had **2.80 million** “members” in Algeria in early 2022.
 
