@@ -31,6 +31,10 @@ params:
   ShowCodeCopyButtons: true
   ShowPostNavLinks: true
 
+  commentSystem:
+    disqus:
+      shortname: mohamedallam-tech
+
   socialIcons:
     - name: linkedin-simple
       url: "https://www.linkedin.com/in/mohamedallam1991/"
