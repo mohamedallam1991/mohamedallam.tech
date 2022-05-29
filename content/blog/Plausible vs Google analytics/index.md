@@ -1,7 +1,7 @@
 ---
 title: "Analytics tools: Google analytics vs the alternatives"
 slug: Analytics-tools-Google-analytics-alternatives-compared
-date: 2022-05-19
+date: 2022-05-29
 description: HGoogle Analytics is the most popular of the web analytics tools. But are there alternatives? What are they and how do they work?.
 tags:
   - Blogging
