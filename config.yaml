@@ -1,5 +1,5 @@
 baseURL: 'https://mohamedallam.tech'
-title: Mohamed Allam
+title: Mohamed Allam, a web developer, specializing in back end technologies, sharing his journey.
 languageCode: 'en-us'
 theme: PaperModX
 enableRobotsTXT: true
@@ -7,9 +7,9 @@ enableRobotsTXT: true
 params:
   # basic
   description: My journey cheating on PHP Laravel for Golang, then Elixir become my mistress
-  author: Mohamed
-  #images:
-  #  - preview.png
+  author: Mohamed Allam
+  images:
+   - wallpaper.png
   favicon: favicon.ico
   #logo:
   #  icon: forge.png
