@@ -309,5 +309,5 @@ So bear in mind that whenever you declare a variable you have to use it in its s
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="nx">HTTPRequest</span><span class="p">,</span> <span class="nx">URL</span>
 </code></pre></div>]]></content:encoded></item><item><title>Hello Go</title><link>https://mohamedallam.tech/blog/hello-go/</link><pubDate>Thu, 19 May 2022 00:00:00 +0000</pubDate><guid>https://mohamedallam.tech/blog/hello-go/</guid><description>Say hello to the Go lang</description><content:encoded><![CDATA[<p>This page demostrates a published (non-draft) one, with tags that can be seen
 in <a href="/tags">Tags</a></p>
-<img src="go.svg" atl="Go logo" style="width: 40%" no-zoom>
+<img src="go.svg" alt="Go logo" style="width: 40%" no-zoom>
 ]]></content:encoded></item></channel></rss>
