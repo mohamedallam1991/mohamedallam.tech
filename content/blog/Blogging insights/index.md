@@ -11,6 +11,12 @@ cover:
   caption: blogging
 ---
 
+Let me lay some ground here. Did you know that people are [90% visual beings](https://ernestoolivares.com/2013/01/11/we-are-90-visuals-beings/) and that blog articles with images [get 94% more views](https://www.jeffbullas.com/6-powerful-reasons-why-you-should-include-images-in-your-marketing-infographic/). But the visual asset that is exploding right now and will make up to [80% of all online traffic by 2021](https://techcrunch.com/2017/06/08/cisco-ip-traffic-shoots-up-to-3-zettabytes-by-2021-video-will-be-80-of-it/) is video!
+
+To stand out, it is time to start a blog on YouTube or, at least, embed video content into your text posts. The first tactic will help to get more traffic (I bet you know that [55% of all Google search](https://tubularinsights.com/youtube-google-search-results/) results contain videos), and the second one will give your blog a dwell time boost.
+
+
+
 Looking For Reliable Blogging Advice? Read This!
 
 Blogs have a profound effect on people's lives. Blogging can be a tool that will be useful for everyday people to influence the world with a large audience. Read this article to learn more about how to make blogging successfully.
