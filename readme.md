@@ -1,6 +1,6 @@
 # mohamedallam.tech
 
-blog site
+Mohamed Allam blog site
 
 ## Development Instruction
 
