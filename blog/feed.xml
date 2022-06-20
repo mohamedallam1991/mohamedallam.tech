@@ -1,4 +1,59 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Blogs on Mohamed Allam</title><link>https://mohamedallam.tech/blog/</link><description>Recent content in Blogs on Mohamed Allam</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 29 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://mohamedallam.tech/blog/feed.xml" rel="self" type="application/rss+xml"/><item><title>Analytics tools: Google analytics vs the alternatives</title><link>https://mohamedallam.tech/blog/analytics-tools-google-analytics-alternatives-compared/</link><pubDate>Sun, 29 May 2022 00:00:00 +0000</pubDate><guid>https://mohamedallam.tech/blog/analytics-tools-google-analytics-alternatives-compared/</guid><description>HGoogle Analytics is the most popular of the web analytics tools. But are there alternatives? What are they and how do they work?.</description><content:encoded><![CDATA[<h1 id="analytics-tools-google-analytics-vs-the-world">Analytics tools Google analytics vs the world</h1>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Blogs on Mohamed Allam</title><link>https://mohamedallam.tech/blog/</link><description>Recent content in Blogs on Mohamed Allam</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 20 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://mohamedallam.tech/blog/feed.xml" rel="self" type="application/rss+xml"/><item><title>MariaDB: Docker compose and Docker run</title><link>https://mohamedallam.tech/blog/mariadb-docker-compose-and-docker-run/</link><pubDate>Mon, 20 Jun 2022 00:00:00 +0000</pubDate><guid>https://mohamedallam.tech/blog/mariadb-docker-compose-and-docker-run/</guid><description>Lets see how MariaDb works in a docker container</description><content:encoded><![CDATA[<h1 id="running-mariadb-in-a-docker-container">Running MariaDB in a docker container</h1>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">docker run -d <span class="se">\
+</span><span class="se"></span>    --name my-mariadb <span class="se">\
+</span><span class="se"></span>    -p 3306:3306 <span class="se">\
+</span><span class="se"></span>    -v <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>/mariadb/data/:/var/lib/mysql <span class="se">\
+</span><span class="se"></span>    --user 1000:1000 <span class="se">\
+</span><span class="se"></span>    -e <span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span>password <span class="se">\
+</span><span class="se"></span>    -e <span class="nv">MYSQL_PASSWORD</span><span class="o">=</span>password <span class="se">\
+</span><span class="se"></span>    -e <span class="nv">MYSQL_USER</span><span class="o">=</span>admin <span class="se">\
+</span><span class="se"></span>    -e <span class="nv">MYSQL_DATABASE</span><span class="o">=</span>database <span class="se">\
+</span><span class="se"></span>    mariadb:latest
+</code></pre></div><ul>
+<li>
+<p>The -d instructs docker container to run as a detached process. It run container in background and print container ID</p>
+</li>
+<li>
+<p>-p is for port mapping. We are instructing the container to expose the container port externally. Container port 3306 is mapped to host port 3306. That means the service can be accessed through localhost:3306</p>
+</li>
+<li>
+<p>The -v directive is used to mount volumes. In our case we are mounting the container volume /var/lib/mysql to host path ~/apps/mariadb/data. Containers are ephemeral devices that will contain its data for the time it is running. Once a container is stopped, its data is lost. Mounting volumes ensures that the data is added to a host path that can be reused when the container is restarted.</p>
+</li>
+<li>
+<p>The &ndash;user argument is used to run the container with an arbitrary user (non root user). This happens if you need to run mysqld with a specific UID/GID.</p>
+</li>
+<li>
+<p>The -e argument is for the environment variables. The supplied environment variables will be used to set up a Mariadb user, password and a database.</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">docker <span class="nb">exec</span> -it my-mariadb /bin/bash
+</code></pre></div><p>We can see all containers running</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"> docker container ls
+</code></pre></div><p>We can see even those who were stopped</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"> docker container ls -a
+</code></pre></div><p>We take the container ID and we use that</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">docker restart <span class="s2">&#34;container-id&#34;</span>
+</code></pre></div><h1 id="docker-compose">Docker compose</h1>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">services:
+  mariadb:
+    image: mariadb:latest
+    ports:
+      - 3306:3306
+    volumes:
+      - ./mariadb/compose/:/var/lib/mysql
+    environment:
+        - <span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span>password
+        - <span class="nv">MYSQL_PASSWORD</span><span class="o">=</span>password
+        - <span class="nv">MYSQL_USER</span><span class="o">=</span>admin
+        - <span class="nv">MYSQL_DATABASE</span><span class="o">=</span>database
+</code></pre></div><pre tabindex="0"><code>docker-compose up -d
+</code></pre><ul>
+<li>up brings up the container</li>
+<li>-d in a detached mode</li>
+</ul>
+<p>Login the container bash</p>
+<pre tabindex="0"><code>docker-compose exec mariadb /bin/bash
+</code></pre>]]></content:encoded></item><item><title>Analytics tools: Google analytics vs the alternatives</title><link>https://mohamedallam.tech/blog/analytics-tools-google-analytics-alternatives-compared/</link><pubDate>Sun, 29 May 2022 00:00:00 +0000</pubDate><guid>https://mohamedallam.tech/blog/analytics-tools-google-analytics-alternatives-compared/</guid><description>HGoogle Analytics is the most popular of the web analytics tools. But are there alternatives? What are they and how do they work?.</description><content:encoded><![CDATA[<h1 id="analytics-tools-google-analytics-vs-the-world">Analytics tools Google analytics vs the world</h1>
 <p>Google Analytics can help you gain a great deal of insight into your Internet website, and its insights and information can help you make more informed marketing choices. However, if you&rsquo;re not a fan of the analytics tool or its features, there are numerous other choices available.</p>
 <h2 id="what-are-website-analytics">What are website analytics?</h2>
 <p>2005 ushered in a new era as more businesses turned to analytics tools, collecting data to help with their decision-making. Along with that came concerns regarding data storage, ownership and privacy. So tools started their journey</p>
