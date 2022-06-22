@@ -9,7 +9,6 @@ I'm a self-taught freelance web developer who specializes in backend development
 
 Contact me and I will get back to you as soon as possible.
 
-* twitter: mohamedallamorg
 * email: me@mohamedallam.tech
 * name: "Mohamed Allam"
 * location: New York
