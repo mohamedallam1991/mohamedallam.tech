@@ -1,0 +1,35 @@
+---
+label: Basic
+hide_body: false
+fields:
+- type: text
+  name: title
+  label: title
+- type: text
+  name: slug
+  label: slug
+- type: datetime
+  name: date
+  label: date
+- type: textarea
+  name: description
+  label: description
+- type: text
+  name: keywords
+  label: keywords
+- type: list
+  name: tags
+  label: tags
+- type: boolean
+  name: ShowToc
+  label: ShowToc
+- type: field_group
+  name: cover
+  label: cover
+  fields:
+  - type: file
+    name: image
+    label: image
+  - type: text
+    name: caption
+    label: caption
