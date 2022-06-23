@@ -23,6 +23,7 @@ fields:
 - type: boolean
   name: ShowToc
   label: ShowToc
+  hidden: true
 - type: field_group
   name: cover
   label: cover
